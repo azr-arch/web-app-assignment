@@ -40,10 +40,11 @@ export const Register = ({ toggleLogin }: RegisterProps) => {
             const userData = {
                 uid: newUser.user.uid,
                 email: newUser.user.email,
-                isActive: false,
+                isActive: true,
                 lastActive: Date.now(),
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
+                friends: [],
             };
 
             await setDoc(doc(db, "users", newUser.user.uid), userData);

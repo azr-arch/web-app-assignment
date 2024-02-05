@@ -8,18 +8,22 @@ import { FormErrors } from "./form-errors";
 
 interface FormInputProps {
     id: string;
+    name?: string;
     label?: string;
     type?: string;
     placeholder?: string;
     required?: boolean;
     disabled?: boolean;
     errors?: Record<string, string[] | undefined>;
-    clasName?: string;
+    className?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
-    ({ id, label, type, placeholder, disabled, required, errors, clasName, onChange }, ref) => {
+    (
+        { id, label, type, placeholder, disabled, required, errors, className, onChange, name },
+        ref
+    ) => {
         return (
             <div className="space-y-2">
                 <div className="space-y-1">
@@ -33,7 +37,8 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
                     ) : null}
 
                     <Input
-                        className={clasName}
+                        name={name}
+                        className={className}
                         id={id}
                         type={type}
                         required={required}
